@@ -1,22 +1,58 @@
-.trait-box {
+h1 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 0px;
+    margin-left: 2%;
+}
+
+hr {
+    height: 1px;
+    width: 98%;
+    background-color:black;
+    margin:0px auto;
+    border:0px;
+}
+
+.sheet {
+    background-color: rgb(202, 115, 8);
+    width: max-content;
+    margin: auto;
+    border-radius: 5px;
+}
+
+.trait-box, .tracker-box {
     display: flex;
-    background-color: darkorange;
-    width: 800px;
+    width: max-content;
 }
 
 .trait-box ul {
     list-style: none;
     padding-left: 0px;
+    width: max-content;
 }
 
-.trait-box li {
+.trait-box li, .tracker {
     margin: 10px;
     padding: 5px;
     border: 2px solid black;
+    border-radius: 10px;
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 230px;
 }
+
+.trait-box ul li span {
+    margin-right: 16px;
+}
+
+.tracker {
+    margin: 20px 40px;
+    width: max-content;
+    text-align: center;
+}
+
+.tracker-box {
+    margin: auto;
+}
+
 
 .trait-radio {
     width: 20px;
