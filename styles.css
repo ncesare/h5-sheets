@@ -1,62 +1,76 @@
-h1 {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 0px;
-    margin-left: 2%;
-}
-
-hr {
-    height: 1px;
-    width: 98%;
-    background-color:black;
-    margin:0px auto;
-    border:0px;
-}
-
-.sheet {
-    background-color: rgb(202, 115, 8);
-    width: max-content;
-    margin: auto;
-    border-radius: 5px;
-}
-
-.trait-box, .tracker-box {
+body {
     display: flex;
-    width: max-content;
+    flex-direction: column;
 }
 
-.trait-box ul {
-    list-style: none;
-    padding-left: 0px;
-    width: max-content;
+.container, .traits-column, .trait-row, #tracker-container {
+    display: flex;
+    border: 1px solid black;
 }
 
-.trait-box li, .tracker {
+.container {
+    justify-content: space-around;
+    max-width: 750px;
+    min-width: 700px;
+    margin: 40px auto 20px auto;
+}
+
+.traits-column {
     margin: 10px;
-    padding: 5px;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-weight: bold;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.trait-box ul li span {
-    margin-right: 16px;
+.trait-row {
+    display:flex;
+    justify-content: space-between;
+    margin: 5px;
+    align-items: center;
 }
 
-.tracker {
-    margin: 20px 40px;
-    width: max-content;
-    text-align: center;
+.trait-row div {
+    margin: 5px;
 }
 
-.tracker-box {
-    margin: auto;
+.tracker-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: space-around;
 }
 
+/* Manual style for checkboxes. Needs work.
 
-.trait-radio {
-    width: 20px;
-    padding: 2px;
+.radio-box input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
     margin: 2px;
-    float: right;
+    margin-top: 4px;
+
+    font: inherit;
+    color: black;
+    width: 13px;
+    height: 13px;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: inline-flex;
 }
+
+.radio-box input::before {
+    content: "";
+    width: 60%;
+    height: 60%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em black;
+    clip-path: circle();
+    margin: auto auto;
+}
+
+.radio-box input:checked::before {
+    transform: scale(1);
+}
+
+*/
