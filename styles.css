@@ -38,11 +38,13 @@ body {
 }
 
 .names {
-    padding:5px;
+    padding: 5px;
+    border: 0;
+    border-radius: 5px;
 }
 
 .names:hover {
-    background-color: azure;
+    background-color: darkorange;
 }
 
 .tracker-container {
