@@ -131,9 +131,9 @@ function makeRadioButtons(j, row, sourceList) {
 function changeStats(e, j, sourceList) {
 
     if (e.target.checked === true) {
-        sourceList[j].value = e.target.value;
+        sourceList[j].value = Number(e.target.value);
     } else {
-        sourceList[j].value = e.target.value - 1;
+        sourceList[j].value = Number(e.target.value - 1);
     }
 
     for (let i = 1; i < 6; i++) {
