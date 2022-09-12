@@ -1,4 +1,4 @@
-const traits = [{name: 'strength', value: 2},
+let traits = [{name: 'strength', value: 2},
                 {name: 'dexterity', value: 4},
                 {name: 'stamina', value: 3},
                 {name: 'charisma', value: 2},
@@ -8,7 +8,7 @@ const traits = [{name: 'strength', value: 2},
                 {name: 'wits', value: 2},
                 {name: 'resolve', value: 1}]
 
-const skills = [{name: 'athletics', value: 2},
+let skills = [{name: 'athletics', value: 2},
                 {name: 'brawl', value: 3},
                 {name: 'craft', value: 1},
                 {name: 'driving', value: 1},
@@ -36,7 +36,7 @@ const skills = [{name: 'athletics', value: 2},
                 {name: 'science', value: 1},
                 {name: 'technology', value: 0}]
 
-const trackers = [{type: 'health', value: traits[2].value + 3, status: 'full'},
+let trackers = [{type: 'health', value: traits[2].value + 3, status: 'full'},
                   {type: 'willpower', value: traits[5].value + traits[8].value, status: 'full'}] // Figure out if these can be useful
 
 // Generate character traits
@@ -122,7 +122,12 @@ function makeRadioButtons(j, row, sourceList) {
 }
 
 function changeStats(e, j, sourceList) {
-    sourceList[j].value = e.target.value;
+
+    if (e.target.checked === true) {
+        sourceList[j].value = e.target.value;
+    } else {
+        sourceList[j].value = e.target.value - 1;
+    }
 
     for (let i = 1; i < 6; i++) {
         const radio = document.querySelector(`#${sourceList[j].name}-${i}`);
@@ -134,6 +139,8 @@ function changeStats(e, j, sourceList) {
             radio.checked = false;
         }
     }
+
+    console.log(sourceList[j].value);
 }
 
 function makeTracker(sourceValue, trackerContainer) {
