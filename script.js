@@ -100,7 +100,7 @@ function makeRow(j, parentColumn, sourceList) {
     const traitName = document.createElement('div');
     traitName.textContent = (sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1)).replace('-', ' ');
     row.append(traitName);
-    traitName.addEventListener('dblclick', (e) => appendDicePool(e, j, sourceList));
+    traitName.addEventListener('click', (e) => appendDicePool(e, j, sourceList));
 
     return row;
 }
