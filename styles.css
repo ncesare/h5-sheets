@@ -55,6 +55,14 @@ body {
     justify-content: space-around;
 }
 
+.stat-tracker {
+    height: 16px;
+    width: 16px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
 #dice-display {
     min-width: 200px;
     min-height: 2em;

@@ -147,8 +147,6 @@ function changeStats(e, j, sourceList) {
             radio.checked = false;
         }
     }
-
-    console.log(sourceList[j].name + ' ' + sourceList[j].value);
 }
 
 function makeTracker(sourceValue, trackerContainer) {
@@ -161,15 +159,30 @@ function makeTracker(sourceValue, trackerContainer) {
     container.append(buttonContainer);
 
     for (let i = 1; i < 11; i++) {
-        const tracker = document.createElement('input');
+        const tracker = document.createElement('button');
+        tracker.setAttribute('type', 'button');
         tracker.classList.add('stat-tracker');
-        tracker.setAttribute('type', 'checkbox');
         tracker.setAttribute('value', i);
         buttonContainer.append(tracker);
+        tracker.addEventListener('click', (e) => changeTracker(e))
 
         if (tracker.value <= sourceValue.value) {
-            tracker.checked = true;
+            tracker.style.backgroundColor = 'green';
         }
+    }
+}
+
+function changeTracker(e) {
+    if (e.target.style.backgroundColor === 'green') {
+        e.target.style.backgroundColor = 'yellow';
+    }
+    else if (e.target.style.backgroundColor === 'yellow') {
+        e.target.style.backgroundColor = 'red';
+    } 
+    else if (e.target.style.backgroundColor === 'red') {
+        e.target.style.backgroundColor = null;
+    } else {
+        e.target.style.backgroundColor = 'green';
     }
 }
 
