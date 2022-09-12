@@ -98,6 +98,7 @@ function makeRow(j, parentColumn, sourceList) {
     parentColumn.append(row);
 
     const traitName = document.createElement('div');
+    traitName.classList.add('names');
     traitName.textContent = (sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1)).replace('-', ' ');
     row.append(traitName);
     traitName.addEventListener('click', (e) => appendDicePool(e, j, sourceList));

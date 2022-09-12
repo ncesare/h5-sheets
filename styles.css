@@ -37,8 +37,12 @@ body {
     align-items: center;
 }
 
-.trait-row div {
-    margin: 5px;
+.names {
+    padding:5px;
+}
+
+.names:hover {
+    background-color: azure;
 }
 
 .tracker-container {
