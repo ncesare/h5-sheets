@@ -8,32 +8,32 @@ const traits = [{name: 'strength', value: 2},
                 {name: 'wits', value: 2},
                 {name: 'resolve', value: 1}]
 
-const skills = [{name: 'athletics', value: 0},
-                {name: 'brawl', value: 0},
-                {name: 'craft', value: 0},
-                {name: 'driving', value: 0},
-                {name: 'firearms', value: 0},
-                {name: 'larceny', value: 0},
+const skills = [{name: 'athletics', value: 2},
+                {name: 'brawl', value: 3},
+                {name: 'craft', value: 1},
+                {name: 'driving', value: 1},
+                {name: 'firearms', value: 1},
+                {name: 'larceny', value: 2},
                 {name: 'melee', value: 0},
-                {name: 'stealth', value: 0},
+                {name: 'stealth', value: 2},
                 {name: 'survival', value: 0},
-                {name: 'animal ken', value: 0},
-                {name: 'etiquette', value: 0},
-                {name: 'insight', value: 0},
-                {name: 'intimidation', value: 0},
+                {name: 'animal-ken', value: 0},
+                {name: 'etiquette', value: 2},
+                {name: 'insight', value: 3},
+                {name: 'intimidation', value: 3},
                 {name: 'leadership', value: 0},
                 {name: 'performance', value: 0},
-                {name: 'persuasion', value: 0},
+                {name: 'persuasion', value: 2},
                 {name: 'streetwise', value: 0},
                 {name: 'subterfuge', value: 0},
                 {name: 'academics', value: 0},
-                {name: 'awareness', value: 0},
+                {name: 'awareness', value: 3},
                 {name: 'finance', value: 0},
-                {name: 'investigation', value: 0},
+                {name: 'investigation', value: 2},
                 {name: 'medicine', value: 0},
                 {name: 'occult', value: 0},
                 {name: 'politics', value: 0},
-                {name: 'science', value: 0},
+                {name: 'science', value: 1},
                 {name: 'technology', value: 0}]
 
 const trackers = [{type: 'health', value: traits[2].value + 3, status: 'full'},
@@ -55,40 +55,17 @@ for (let i = 0; i < 3; i++) {
 
 const trackerContainer = document.querySelector('#tracker-container');
 
-const healthContainer = document.createElement('div');
-healthContainer.classList.add('tracker-container');
-trackerContainer.append(healthContainer);
-healthContainer.append('Health');
-const healthTrackerContainer = document.createElement('div');
-healthContainer.append(healthTrackerContainer);
-for (let i = 0; i < 10; i++) {
-    const healthTracker = document.createElement('input');
-    healthTracker.classList.add('stat-tracker');
-    healthTracker.setAttribute('type', 'checkbox');
-    healthTrackerContainer.append(healthTracker);
-}
-
-const willpowerContainer = document.createElement('div');
-willpowerContainer.classList.add('tracker-container');
-trackerContainer.append(willpowerContainer);
-willpowerContainer.append('Willpower');
-const willpowerTrackerContainer = document.createElement('div');
-willpowerContainer.append(willpowerTrackerContainer);
-for (let i = 0; i < 10; i++) {
-    const willpowerTracker = document.createElement('input');
-    willpowerTracker.classList.add('stat-tracker');
-    willpowerTracker.setAttribute('type', 'checkbox');
-    willpowerTrackerContainer.append(willpowerTracker);
-}
+makeTracker(trackers[0], trackerContainer);
+makeTracker(trackers[1], trackerContainer);
 
 const despairContainer = document.createElement('div');
-despairContainer.classList.add('tracker-container');
-trackerContainer.append(despairContainer);
-despairContainer.append('Despair');
+    despairContainer.classList.add('tracker-container');
+    trackerContainer.append(despairContainer);
+    despairContainer.append('Despair');
 const despairTracker = document.createElement('input');
-despairTracker.classList.add('stat-tracker')
-despairTracker.setAttribute('type', 'checkbox');
-despairContainer.append(despairTracker);
+    despairTracker.classList.add('stat-tracker')
+    despairTracker.setAttribute('type', 'checkbox');
+    despairContainer.append(despairTracker);
 
 // Generate character skills
 
@@ -115,7 +92,7 @@ function makeRow(j, parentColumn, sourceList) {
     parentColumn.append(row);
 
     const traitName = document.createElement('div');
-    traitName.textContent = sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1);
+    traitName.textContent = (sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1)).replace('-', ' ');
     row.append(traitName);
 
     return row;
@@ -132,11 +109,51 @@ function makeRadioButtons(j, row, sourceList) {
         radio.classList.add('stat-tracker')
         radio.setAttribute('type', 'checkbox');
         radio.setAttribute('value', i);
+        radio.setAttribute('id', `${sourceList[j].name}-${i}`);
         radio.setAttribute('name', sourceList[j].name);
         radioBox.append(radio);
 
         if (radio.value <= sourceList[j].value) {
             radio.checked = true;
+        }
+
+        radio.addEventListener('change', (e) => changeStats(e, j, sourceList));
+    }
+}
+
+function changeStats(e, j, sourceList) {
+    sourceList[j].value = e.target.value;
+
+    for (let i = 1; i < 6; i++) {
+        const radio = document.querySelector(`#${sourceList[j].name}-${i}`);
+        if (radio.value < sourceList[j].value) {
+            radio.checked = true;
+        }
+
+        if (radio.value > sourceList[j].value) {
+            radio.checked = false;
+        }
+    }
+}
+
+function makeTracker(sourceValue, trackerContainer) {
+    const container = document.createElement('div');
+    container.classList.add('tracker-container');
+    trackerContainer.append(container);
+    container.append(sourceValue.type[0].toUpperCase() + sourceValue.type.slice(1));
+
+    const buttonContainer = document.createElement('div');
+    container.append(buttonContainer);
+
+    for (let i = 1; i < 11; i++) {
+        const tracker = document.createElement('input');
+        tracker.classList.add('stat-tracker');
+        tracker.setAttribute('type', 'checkbox');
+        tracker.setAttribute('value', i);
+        buttonContainer.append(tracker);
+
+        if (tracker.value <= sourceValue.value) {
+            tracker.checked = true;
         }
     }
 }
