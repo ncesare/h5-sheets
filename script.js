@@ -39,6 +39,12 @@ let skills = [{name: 'athletics', value: 2},
 let trackers = [{type: 'health', value: traits[2].value + 3, status: 'full'},
                   {type: 'willpower', value: traits[5].value + traits[8].value, status: 'full'}] // Figure out if these can be useful
 
+let dicePool = [];
+
+const dicePoolDisplay = document.querySelector('#dice-pool');
+const rollButton = document.querySelector('#roll-button');
+rollButton.addEventListener('click', roll);
+
 // Generate character traits
 
 const traitsContainer = document.querySelector('#traits-container')
@@ -94,6 +100,7 @@ function makeRow(j, parentColumn, sourceList) {
     const traitName = document.createElement('div');
     traitName.textContent = (sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1)).replace('-', ' ');
     row.append(traitName);
+    traitName.addEventListener('dblclick', (e) => appendDicePool(e, j, sourceList));
 
     return row;
 }
@@ -140,7 +147,7 @@ function changeStats(e, j, sourceList) {
         }
     }
 
-    console.log(sourceList[j].value);
+    console.log(sourceList[j].name + ' ' + sourceList[j].value);
 }
 
 function makeTracker(sourceValue, trackerContainer) {
@@ -163,4 +170,79 @@ function makeTracker(sourceValue, trackerContainer) {
             tracker.checked = true;
         }
     }
+}
+
+function appendDicePool(e, j, sourceList) {
+    if (dicePoolDisplay.textContent.includes('success')) {
+        dicePoolDisplay.textContent = ''
+    }
+
+    if (dicePool.length === 2) {
+        dicePool = [];
+        dicePool.push(sourceList[j].value)
+        dicePoolDisplay.textContent = `${sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1).replace('-', ' ')} (${sourceList[j].value}) `;
+    } else {
+        dicePool.push(sourceList[j].value);
+        dicePoolDisplay.textContent += `${sourceList[j].name[0].toUpperCase() + sourceList[j].name.slice(1).replace('-', ' ')} (${sourceList[j].value}) `;
+    }
+
+    if (dicePool.length === 2) {
+        dicePoolDisplay.textContent += `Dice Pool: ${sum(dicePool)}`;
+    }
+}
+
+function sum(array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum  += array[i];
+    }
+    return sum;
+}
+
+function roll() {
+    let rollResult = [];
+
+    dicePoolDisplay.textContent = '';
+
+    if (sum(dicePool) === 0) {
+        dicePoolDisplay.textContent = '0 successes';
+        return;
+    }
+
+    for (let i = 0;  i < sum(dicePool); i++) {
+        const diceResult = Math.floor(Math.random() * 10) + 1;
+        rollResult.push(diceResult);
+        dicePoolDisplay.textContent += `${diceResult} `;
+    }
+
+    let successes = countSuccesses(rollResult);
+
+    dicePoolDisplay.textContent += `(${successes} successes)`;
+}
+
+function countSuccesses(rollResult) {
+    let successes = 0;
+    let tens = 0;
+
+    rollResult.forEach(dice => {
+        console.log('Dice:' + dice);
+        if (5 < dice && dice < 10) {
+            successes++;
+            console.log(successes);
+        }
+        else if (dice === 10) {
+            tens++;
+            console.log(tens);
+        }
+    })
+
+    if (tens > 0 && tens % 2 === 0) {
+        successes += tens * 2;
+    } else if (tens > 0 && tens % 2 !== 0) {
+        tens--;
+        successes++;
+        successes += tens * 2;
+    }
+
+    return successes;
 }
