@@ -3,7 +3,7 @@ body {
     flex-direction: column;
 }
 
-.container, .trait-row, #tracker-container {
+.container, #tracker-container {
     display: flex;
     border: 1px solid black;
 }
@@ -40,13 +40,14 @@ body {
 
 .names {
     padding: 5px;
-    min-width: 86px;
+    min-width: 94px;
     border: 0;
     border-radius: 5px;
 }
 
 .names:hover {
-    background-color: darkorange;
+    box-shadow: 0px 0px 2px 2px darkorange;
+    font-weight: bold;
 }
 
 .tracker-container {
