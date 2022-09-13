@@ -99,7 +99,7 @@ function makeRow(j, parentColumn, sourceList) {
 
     const traitName = document.createElement('div');
     traitName.classList.add('names');
-    traitName.textContent = capitalize(sourceList[j].name);
+    traitName.textContent = sourceList[j].name.replace('-', ' ');
     row.append(traitName);
     traitName.addEventListener('click', (e) => appendDicePool(e, j, sourceList));
 
@@ -153,7 +153,7 @@ function makeTracker(sourceValue, trackerContainer) {
     const container = document.createElement('div');
     container.classList.add('tracker-container');
     trackerContainer.append(container);
-    container.append(capitalize(sourceValue.type));
+    container.append(sourceValue.type);
 
     const buttonContainer = document.createElement('div');
     container.append(buttonContainer);
@@ -194,10 +194,10 @@ function appendDicePool(e, j, sourceList) {
     if (dicePool.length === 2) {
         dicePool = [];
         dicePool.push(sourceList[j].value)
-        dicePoolDisplay.textContent = `${capitalize(sourceList[j].name)} (${sourceList[j].value}) `;
+        dicePoolDisplay.textContent = `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) `;
     } else {
         dicePool.push(sourceList[j].value);
-        dicePoolDisplay.textContent += `${capitalize(sourceList[j].name)} (${sourceList[j].value}) `;
+        dicePoolDisplay.textContent += `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) `;
     }
 
     if (dicePool.length === 2) {
@@ -259,10 +259,6 @@ function countSuccesses(rollResult) {
     }
 
     return successes;
-}
-
-function capitalize(string) {
-    return (string[0].toUpperCase() + string.slice(1)).replace('-', ' ');
 }
 
 // Add desperation dice and other roll modifiers.

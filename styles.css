@@ -1,3 +1,7 @@
+* {
+    font-size: 1rem;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -45,6 +49,7 @@ body {
     min-width: 94px;
     border: 0;
     border-radius: 5px;
+    text-transform: capitalize;
 }
 
 .names:hover {
@@ -66,6 +71,7 @@ body {
     align-items: center;
     padding: 10px;
     justify-content: space-around;
+    text-transform: capitalize;
 }
 
 .stat-tracker {
@@ -82,10 +88,15 @@ button.stat-tracker {
 }
 
 #dice-display {
-    min-width: 200px;
-    min-height: 2em;
+    min-width: 300px;
+    min-height: 2rem;
     font-size: 24pt;
     border: 1px solid black;
+}
+
+#dice-pool {
+    min-width: 300px;
+    text-transform: capitalize;
 }
 
 /* Manual style for checkboxes. Needs work.
