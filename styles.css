@@ -50,6 +50,10 @@ body {
     font-weight: bold;
 }
 
+.radio-box {
+    min-width: 115px;
+}
+
 .tracker-container {
     display: flex;
     flex-direction: column;
