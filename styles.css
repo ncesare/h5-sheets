@@ -3,7 +3,7 @@ body {
     flex-direction: column;
 }
 
-.container, .traits-column, .trait-row, #tracker-container {
+.container, .trait-row, #tracker-container {
     display: flex;
     border: 1px solid black;
 }
@@ -25,7 +25,8 @@ body {
 }
 
 .traits-column {
-    margin: 10px;
+    display: flex;
+    margin: 6px;
     flex-direction: column;
     justify-content: space-around;
 }
@@ -39,6 +40,7 @@ body {
 
 .names {
     padding: 5px;
+    min-width: 86px;
     border: 0;
     border-radius: 5px;
 }
@@ -61,6 +63,11 @@ body {
     background-color: white;
     border: 1px solid black;
     border-radius: 2px;
+}
+
+button.stat-tracker {
+    height: 24px;
+    width: 24px;
 }
 
 #dice-display {

@@ -2,11 +2,11 @@ let traits = [{name: 'strength', value: 2},
                 {name: 'dexterity', value: 4},
                 {name: 'stamina', value: 3},
                 {name: 'charisma', value: 2},
-                {name: 'manipulation', value: 5},
-                {name: 'composure', value: 1},
+                {name: 'manipulation', value: 1},
+                {name: 'composure', value: 2},
                 {name: 'intelligence', value: 3},
                 {name: 'wits', value: 2},
-                {name: 'resolve', value: 1}]
+                {name: 'resolve', value: 3}]
 
 let skills = [{name: 'athletics', value: 2},
                 {name: 'brawl', value: 3},
@@ -264,3 +264,5 @@ function countSuccesses(rollResult) {
 function capitalize(string) {
     return (string[0].toUpperCase() + string.slice(1)).replace('-', ' ');
 }
+
+// Add desperation dice and other roll modifiers.
