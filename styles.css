@@ -40,6 +40,8 @@ body {
 
 .names {
     padding: 5px;
+    padding-right: 2px;
+    margin-right: 3px;
     min-width: 94px;
     border: 0;
     border-radius: 5px;
@@ -51,7 +53,11 @@ body {
 }
 
 .radio-box {
-    min-width: 115px;
+    min-width: 110px;
+}
+
+.radio-box input {
+    margin: 2px;
 }
 
 .tracker-container {
