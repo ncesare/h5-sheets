@@ -94,6 +94,12 @@ button.stat-tracker {
     width: 24px;
 }
 
+#roll-container {
+    position: sticky;
+    top: 10px;
+    background-color: white;
+}
+
 #dice-display {
     min-width: 300px;
     min-height: 2rem;
