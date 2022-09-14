@@ -165,6 +165,7 @@ function makeTracker(sourceValue, trackerContainer) {
         tracker.setAttribute('value', i);
         buttonContainer.append(tracker);
         tracker.addEventListener('click', (e) => changeTracker(e))
+        tracker.addEventListener('contextmenu', (e) => changeTrackerReverse(e))
 
         if (tracker.value <= sourceValue.value) {
             tracker.style.backgroundColor = 'green';
@@ -186,6 +187,22 @@ function changeTracker(e) {
     }
 }
 
+function changeTrackerReverse(e) {
+    e.preventDefault();
+    if (e.target.style.backgroundColor === 'green') {
+        e.target.style.backgroundColor = null;
+    }
+    else if (e.target.style.backgroundColor === 'yellow') {
+        e.target.style.backgroundColor = 'green';
+    } 
+    else if (e.target.style.backgroundColor === 'red') {
+        e.target.style.backgroundColor = 'yellow';
+    } else {
+        e.target.style.backgroundColor = 'red';
+    }
+    return false;
+}
+
 function appendDicePool(e, j, sourceList) {
     if (dicePoolDisplay.textContent.includes('success')) {
         dicePoolDisplay.textContent = ''
@@ -195,9 +212,13 @@ function appendDicePool(e, j, sourceList) {
         dicePool = [];
         dicePool.push(sourceList[j].value)
         dicePoolDisplay.textContent = `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) `;
+    }
+    else if (dicePool.length === 0) {
+        dicePool.push(sourceList[j].value);
+        dicePoolDisplay.textContent += `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) + `;
     } else {
         dicePool.push(sourceList[j].value);
-        dicePoolDisplay.textContent += `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) `;
+        dicePoolDisplay.textContent += `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}): `;
     }
 
     if (dicePool.length === 2) {
