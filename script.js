@@ -211,7 +211,7 @@ function appendDicePool(e, j, sourceList) {
     if (dicePool.length === 2) {
         dicePool = [];
         dicePool.push(sourceList[j].value)
-        dicePoolDisplay.textContent = `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) `;
+        dicePoolDisplay.textContent = `${sourceList[j].name.replace('-', ' ')} (${sourceList[j].value}) + `;
     }
     else if (dicePool.length === 0) {
         dicePool.push(sourceList[j].value);
