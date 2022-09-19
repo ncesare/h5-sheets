@@ -49,12 +49,9 @@ rollButton.addEventListener('click', roll);
 
 const traitsContainer = document.querySelector('#traits-container')
 
-for (let i = 0; i < 3; i++) {
-    const traitsColumn = makeColumn(traitsContainer);
-    for (let j = i * 3; j < i * 3 + 3; j++) {
-        const traitRow = makeRow(j, traitsColumn, traits);
-        makeRadioButtons(j, traitRow, traits);
-    }
+for (let j = 0; j < 9; j++) {
+    const traitRow = makeRow(j, traitsContainer, traits);
+    makeRadioButtons(j, traitRow, traits);
 }
 
 // Generate Health, Willpower, and Despair trackers
@@ -77,25 +74,15 @@ const despairTracker = document.createElement('input');
 
 const skillsContainer = document.querySelector('#skills-container');
 
-for (let i = 0; i < 3; i++) {
-    const skillsColumn = makeColumn(skillsContainer);
-    for (let j = i * 9; j < i * 9 + 9; j++) {
-        const skillRow = makeRow(j, skillsColumn, skills);
-        makeRadioButtons(j, skillRow, skills);
-    }
+for (let j = 0; j < 27; j++) {
+    const skillRow = makeRow(j, skillsContainer, skills);
+    makeRadioButtons(j, skillRow, skills);
 }
 
-function makeColumn(parent) {
-    const column = document.createElement('div');
-    column.classList.add('traits-column');
-    parent.append(column);
-    return column;
-}
-
-function makeRow(j, parentColumn, sourceList) {
+function makeRow(j, parentContainer, sourceList) {
     const row = document.createElement('div');
     row.classList.add('trait-row');
-    parentColumn.append(row);
+    parentContainer.append(row);
 
     const traitName = document.createElement('div');
     traitName.classList.add('names');
