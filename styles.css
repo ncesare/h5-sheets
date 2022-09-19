@@ -62,6 +62,10 @@ body {
 
 .radio-box {
     min-width: 110px;
+    display: grid;
+    grid-template-columns: repeat(5, 16px);
+    grid-template-rows: 16px;
+    column-gap: 4px;
 }
 
 .radio-box input {
