@@ -101,6 +101,18 @@ button.stat-tracker {
     background-color: white;
 }
 
+#roll-button {
+    background-color: transparent;
+    border: 0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+#roll-button:hover {
+    box-shadow: 1px 1px 3px black;
+}
+
 #dice-display {
     min-width: 300px;
     min-height: 2rem;
@@ -111,7 +123,11 @@ button.stat-tracker {
 
 #dice-pool {
     min-width: 300px;
+    display: flex;
     text-transform: capitalize;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 /* Manual style for checkboxes. Needs work.
