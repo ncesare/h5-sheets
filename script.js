@@ -1,3 +1,13 @@
+let characterInfo = {name: "Joe", 
+                    concept: "Hunter", 
+                    chronicle: "Night by Night",
+                    ambition: "Kill vampires",
+                    desire: "Make love",
+                    redemption: "Acquire resources from quarry",
+                    creed: "Martial",
+                    drive: "Greed",
+                    cell: "Hunters"}
+
 let traits = [{name: 'strength', value: 2},
                 {name: 'dexterity', value: 4},
                 {name: 'stamina', value: 3},
@@ -44,6 +54,15 @@ let dicePool = [];
 const dicePoolDisplay = document.querySelector('#dice-pool');
 const rollButton = document.querySelector('#roll-button');
 rollButton.addEventListener('click', roll);
+
+// Fill text boxes at top of char cheet
+
+for (key of Object.keys(characterInfo)) {
+    console.log(key);
+    console.log(characterInfo[key]);
+    const infoBox = document.getElementById(key);
+    infoBox.value = characterInfo[key];
+}
 
 // Generate character traits
 

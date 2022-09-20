@@ -19,6 +19,25 @@ body {
     justify-content: center;
 }
 
+#info-container>form {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 230px);
+    grid-template-rows: repeat(3, 24px);
+    grid-auto-flow: column;
+    row-gap: 12px;
+    column-gap: 10px;
+    max-width: 710px;
+    min-width: 700px;
+    margin: 40px auto 20px auto;
+    padding: 16px 10px;
+}
+
+form>div>input {
+    min-width: 110px;
+    margin-left: 10px;
+}
+
 .container {
     border: 1px solid black;
     display: grid;
@@ -76,7 +95,7 @@ body {
 
 .radio-box {
     min-width: 110px;
-    display: grid;
+    display: inline-grid;
     grid-template-columns: repeat(5, 16px);
     grid-template-rows: 16px;
     column-gap: 4px;
