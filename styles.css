@@ -1,3 +1,5 @@
+/* Try this color scheme: http://paletton.com/#uid=1450u0ke5hM7PrnbxmgiDe3n-b9 */
+
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 * {
@@ -17,6 +19,7 @@ body {
 
 #roll-container {
     justify-content: center;
+    width: 710px;
 }
 
 #info-container>form {
