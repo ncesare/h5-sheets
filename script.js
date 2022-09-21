@@ -1,4 +1,4 @@
-let characterInfo = {name: "Joe", 
+let characterInfo = {name: "Hunter McHunterface", 
                     concept: "Hunter", 
                     chronicle: "Night by Night",
                     ambition: "Kill vampires",
@@ -58,10 +58,9 @@ rollButton.addEventListener('click', roll);
 // Fill text boxes at top of char cheet
 
 for (key of Object.keys(characterInfo)) {
-    console.log(key);
-    console.log(characterInfo[key]);
     const infoBox = document.getElementById(key);
     infoBox.value = characterInfo[key];
+    infoBox.addEventListener('input', () => characterInfo[key] = infoBox.value)
 }
 
 // Generate character traits
